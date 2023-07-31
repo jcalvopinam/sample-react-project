@@ -1,35 +1,20 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import PropTypes from 'prop-types'
+import Title from './components/Title';
+import UserDetail from './components/UserDetail';
+import Book from './components/Book';
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App({ title, user, message, book }) {
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
+      <Title title={title} />
+      <div style={{ display: 'flex'}}>
+        <UserDetail user={user} /> {message} 😈
       </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <Book book={book} />
     </>
   )
 }
 
-export default App
+App.propTypes = {
+  message: PropTypes.any.isRequired
+};
