@@ -8,3 +8,8 @@ There are some branches, inside of each branch you will find important informati
 ```shell
 git checkout intro-js
 ```
+
+- Introduction to React
+```shell
+git checkout intro-react
+```
