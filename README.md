@@ -1,10 +1,10 @@
-# sample-vite-project
+# sample-react-project
 
-## Install dependencies
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-- Go to the project directory
-- Run `npm install`
+There are some branches, inside of each branch you will find important information about the content:
 
-## Start-up the project
-
-- Run `npm run dev`
+- Introduction to JavaScript
+```shell
+git checkout intro-js
+```
