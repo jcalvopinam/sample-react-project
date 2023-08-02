@@ -13,3 +13,8 @@ git checkout intro-js
 ```shell
 git checkout intro-react
 ```
+
+- Increment and decrement counter from an input text
+```shell
+git checkout counter
+```
