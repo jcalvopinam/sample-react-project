@@ -3,12 +3,14 @@ import BillingDetailView from './components/BillingDetailView';
 import BillingView from './components/BillingView';
 import ClientView from './components/ClientView';
 import CompanyView from './components/CompanyView';
+import TotalView from './components/TotalView';
 
 function App() {
 
   const {
     id: userId,
     name: userName,
+    total: totalAmount,
     client: clientData,
     company: companyData,
     items: itemsData
@@ -30,6 +32,7 @@ function App() {
               </div>
             </div>
             <BillingDetailView title="Detalles de la factura" items={itemsData} />
+            <TotalView total={totalAmount}/>
           </div>
         </div>
       </div>
