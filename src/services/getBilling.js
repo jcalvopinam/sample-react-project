@@ -1,12 +1,11 @@
 import { dummyBilling } from "../data/dummyBilling"
 
 export const getBilling = () => {
-  let total = 0;
-  dummyBilling.items.forEach(item => {
-    item.unitTotal = item.price * item.quantity,
-    total = total + item.price * item.quantity;
-  })
-  return {...dummyBilling, total};
+  const total = dummyBilling.items
+    .map(item => item.price * item.quantity)
+    .reduce((accumulator, currentValue) => accumulator + currentValue, 0);
+
+  return { ...dummyBilling, total };
 }
 
 export default getBilling
