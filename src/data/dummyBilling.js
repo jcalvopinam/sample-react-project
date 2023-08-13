@@ -21,18 +21,21 @@ export const dummyBilling = {
       product: 'CPU Intel i7',
       quantity: 1,
       price: 499,
+      unitTotal: 0,
     },
     {
       id: 2,
       product: 'Corsair Keyboard mecánico',
       quantity: 1,
       price: 150,
+      unitTotal: 0,
     },
     {
       id: 3,
       product: 'Monito Asus',
-      quantity: 1,
-      price: 150,
+      quantity: 2,
+      price: 350,
+      unitTotal: 0,
     },
   ]
 }
