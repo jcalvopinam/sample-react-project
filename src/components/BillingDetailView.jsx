@@ -9,14 +9,15 @@ function BillingDetailView({ title, items }) {
         <thead>
           <tr>
             <th>Producto</th>
-            <th>Precio</th>
             <th>Cantidad</th>
+            <th>Precio</th>
+            <th>Unit Total</th>
           </tr>
         </thead>
         <tbody>
-          {items.map(({ id, product, quantity, price }) => {
+          {items.map(({ id, product, quantity, price, unitTotal}) => {
             return (
-              <RowItemView key={id} product={product} quantity={quantity} price={price} />
+              <RowItemView key={id} product={product} quantity={quantity} price={price} unitTotal={unitTotal}/>
             )
           })}
         </tbody>
