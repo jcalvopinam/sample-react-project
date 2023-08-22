@@ -31,6 +31,8 @@ const initialBilling = {
 
 function App() {
 
+  const [activeForm, setActiveForm] = useState(false);
+
   const [count, setCount] = useState(4); //items for dummy data has 3 elements
 
   const [totalAmount, setTotalAmount] = useState(0)
@@ -82,6 +84,10 @@ function App() {
     setCount(count + 1);
   }
 
+  const onActiveForm = () => {
+    setActiveForm(!activeForm);
+  }
+
   return (
     <>
       <div className="container">
@@ -99,7 +105,13 @@ function App() {
             </div>
             <BillingDetailView title="Detalles de la factura" items={items} />
             <TotalView total={totalAmount} />
-            <FormItemsView handler={(newItem) => handlerAddItems(newItem)} />
+            <button className="btn btn-secondary"
+              onClick={onActiveForm}>
+              {!activeForm ? "Agregar Item" : "Ocultar Form"}
+            </button>
+            {
+              !activeForm || <FormItemsView handler={(newItem) => handlerAddItems(newItem)} />
+            }
           </div>
         </div>
       </div>
