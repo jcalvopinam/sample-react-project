@@ -17,7 +17,6 @@ RowItemView.propTypes = {
   product: PropTypes.string.isRequired,
   quantity: PropTypes.number.isRequired,
   price: PropTypes.number.isRequired,
-  unitTotal: PropTypes.number.isRequired,
 }
 
 export default RowItemView
