@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 
-function RowItemView({product, quantity, price, unitTotal}) {
+function RowItemView({ id, product, quantity, price, unitTotal, handlerRemoveItem }) {
   return (
     <>
       <tr>
@@ -8,6 +8,13 @@ function RowItemView({product, quantity, price, unitTotal}) {
         <td>{quantity}</td>
         <td>{price}</td>
         <td>{unitTotal}</td>
+        <td>
+          <button
+            className="btn btn-danger btn-xs"
+            onClick={() => handlerRemoveItem(id)}>
+            Eliminar
+          </button>
+        </td>
       </tr>
     </>
   )

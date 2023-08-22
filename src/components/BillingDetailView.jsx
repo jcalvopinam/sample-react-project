@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 import RowItemView from './RowItemView';
 
-function BillingDetailView({ title, items }) {
+function BillingDetailView({ title, items, handlerRemoveItem }) {
   return (
     <>
       <h4>{title}</h4>
@@ -12,12 +12,21 @@ function BillingDetailView({ title, items }) {
             <th>Cantidad</th>
             <th>Precio</th>
             <th>Unit Total</th>
+            <th>Eliminar</th>
           </tr>
         </thead>
         <tbody>
-          {items.map(({ id, product, quantity, price, unitTotal}) => {
+          {items.map(({ id, product, quantity, price, unitTotal }) => {
             return (
-              <RowItemView key={id} product={product} quantity={quantity} price={price} unitTotal={unitTotal}/>
+              <RowItemView
+                key={id}
+                id={id}
+                product={product}
+                quantity={quantity}
+                price={price}
+                unitTotal={unitTotal}
+                handlerRemoveItem={id => handlerRemoveItem(id)}
+              />
             )
           })}
         </tbody>

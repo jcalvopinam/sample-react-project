@@ -73,7 +73,7 @@ function App() {
     });
   };
 
-  const handlerAddItems = ({ product, price, quantity }) => {
+  const handlerAddItem = ({ product, price, quantity }) => {
     setItems([...items, {
       id: count,
       product: product.trim(),
@@ -83,6 +83,10 @@ function App() {
 
     setCount(count + 1);
   }
+
+  const handlerRemoveItem = (id) => {
+    setItems(items.filter((item) => item.id !== id));
+  };
 
   const onActiveForm = () => {
     setActiveForm(!activeForm);
@@ -103,14 +107,20 @@ function App() {
                 <CompanyView title={"Datos de la empresa"} company={companyData} />
               </div>
             </div>
-            <BillingDetailView title="Detalles de la factura" items={items} />
+
+            <BillingDetailView
+              title="Detalles de la factura"
+              items={items}
+              handlerRemoveItem={id => handlerRemoveItem(id)} />
+
             <TotalView total={totalAmount} />
+            
             <button className="btn btn-secondary"
               onClick={onActiveForm}>
               {!activeForm ? "Agregar Item" : "Ocultar Form"}
             </button>
             {
-              !activeForm || <FormItemsView handler={(newItem) => handlerAddItems(newItem)} />
+              !activeForm || <FormItemsView handler={(newItem) => handlerAddItem(newItem)} />
             }
           </div>
         </div>
