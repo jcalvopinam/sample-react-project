@@ -18,3 +18,8 @@ git checkout intro-react
 ```shell
 git checkout counter
 ```
+
+- Billing App
+```shell
+git checkout billing
+```
