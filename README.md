@@ -1,25 +1,21 @@
 # sample-react-project
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Shopping Cart
 
-There are some branches, inside of each branch you will find important information about the content:
+## Getting Started
+### Install dependencies
 
-- Introduction to JavaScript
+- Go to the project directory
+- Run `npm install`
+
+### Start-up the project
+
+- Run `npm run dev`
+
+### Main branch
+
+In the main branch you will find the complete list of branches with a description of their contents.
+
 ```shell
-git checkout intro-js
-```
-
-- Introduction to React
-```shell
-git checkout intro-react
-```
-
-- Increment and decrement counter from an input text
-```shell
-git checkout counter
-```
-
-- Billing App
-```shell
-git checkout billing
+git checkout main
 ```
