@@ -69,6 +69,36 @@ function App() {
             </div>
           </div>
         </div>
+
+        <div className="my-4 w-50">
+          <h3>Products</h3>
+          <table className="table table-hover table-striped">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Unit Total</th>
+                <th>Delete</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>name</td>
+                <td>price</td>
+                <td>quantity</td>
+                <td>unit total</td>
+                <td>deete</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colSpan="3" className="text-end fw-bold">Total</td>
+                <td colSpan="2" className="text-start fw-bold">12345</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
       </div>
     </>
   )
