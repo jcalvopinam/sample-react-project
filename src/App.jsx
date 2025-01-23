@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
 import "./App.css";
+import Card from "./components/Card";
 import StarRating from "./components/StarRating";
 import useGitHubUser from "./hooks/useGitHubUser"; // Correct path to your hook
 
@@ -22,12 +23,12 @@ function App({ name }) {
 
   return (
     <div>
-      <img src={user.avatar_url} alt={user.login} className="avatar" />
-      <h1> hi, {user ? user.login : name}!</h1>
-      The packege is:
-      <input type="checkbox" checked={checked} disabled />
-      {checked ? " delivered!" : " not delivered!"}
-      <br />
+      <Card defaultName={name} user={user} />
+      <h4>
+        The packege is: <input type="checkbox" checked={checked} disabled />
+        {checked ? " delivered!" : " not delivered!"}
+      </h4>
+
       {checked && <StarRating stars={5} />}
       <br />
       <button onClick={() => setChecked(!checked)}>

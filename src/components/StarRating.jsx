@@ -9,6 +9,7 @@ function StarRating({ stars = 5 }) {
 
   return (
     <>
+      <p />
       {createArray(stars).map((n, i) => (
         <Star
           key={i}
@@ -16,7 +17,7 @@ function StarRating({ stars = 5 }) {
           onSelect={() => setSelectedStars(i + 1)}
         />
       ))}
-      <p />
+      <br />
       {selectedStars} of {stars}
       <br />
     </>

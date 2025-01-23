@@ -50,3 +50,23 @@
   border-radius: 50%;
   object-fit: cover;
 }
+
+.user-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  text-align: center;
+}
+
+h4 {
+  font-size: 18px;
+  color: #c0c0c0;
+  margin: 0;
+}
+
+h3 {
+  font-size: 20px;
+  color: #c0c0c0;
+  margin: 0;
+}
