@@ -1,12 +1,12 @@
 import PropTypes from "prop-types";
-import { useState } from "react";
+import { useReducer } from "react";
 import "./App.css";
 import Card from "./components/Card";
 import StarRating from "./components/StarRating";
-import useGitHubUser from "./hooks/useGitHubUser"; // Correct path to your hook
+import useGitHubUser from "./hooks/useGitHubUser";
 
 function App({ name }) {
-  const [checked, setChecked] = useState(false);
+  const [checked, dispatch] = useReducer((checked) => !checked, false);
   const { user, loading, error } = useGitHubUser();
 
   if (loading) {
@@ -31,7 +31,7 @@ function App({ name }) {
 
       {checked && <StarRating stars={5} />}
       <br />
-      <button onClick={() => setChecked(!checked)}>
+      <button onClick={dispatch}>
         {!checked ? " deliver now!" : " cancel delivery!"}{" "}
       </button>
     </div>
