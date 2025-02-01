@@ -7,7 +7,7 @@ import useGitHubUser from "./hooks/useGitHubUser";
 
 function App({ name }) {
   const [checked, dispatch] = useReducer((checked) => !checked, false);
-  const { user, loading, error } = useGitHubUser();
+  const { user, loading, error, fetchUsers } = useGitHubUser();
 
   if (loading) {
     return <p>Loading user...</p>;
@@ -23,16 +23,16 @@ function App({ name }) {
 
   return (
     <div>
-      <Card defaultName={name} user={user} />
+      <Card defaultName={name} user={user} fetchUsers={fetchUsers} />
       <h4>
-        The packege is: <input type="checkbox" checked={checked} disabled />
+        The package is: <input type="checkbox" checked={checked} disabled />
         {checked ? " delivered!" : " not delivered!"}
       </h4>
 
       {checked && <StarRating stars={5} />}
       <br />
       <button onClick={dispatch}>
-        {!checked ? " deliver now!" : " cancel delivery!"}{" "}
+        {!checked ? " deliver now!" : " cancel delivery!"}
       </button>
     </div>
   );
