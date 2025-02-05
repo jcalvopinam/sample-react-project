@@ -1,11 +1,12 @@
 import PropTypes from "prop-types";
-import { useState } from "react";
 import Star from "./Star";
 
 const createArray = (length) => [...Array(length)];
 
-function StarRating({ stars = 5 }) {
-  const [selectedStars, setSelectedStars] = useState(0);
+function StarRating({ stars = 5, selectedStars, setSelectedStars }) {
+  const handleSelectStars = (i) => {
+    setSelectedStars(selectedStars === i + 1 ? 0 : i + 1);
+  };
 
   return (
     <>
@@ -14,11 +15,11 @@ function StarRating({ stars = 5 }) {
         <Star
           key={i}
           selected={selectedStars > i}
-          onSelect={() => setSelectedStars(i + 1)}
+          onSelect={() => handleSelectStars(i)}
         />
       ))}
       <br />
-      {selectedStars} of {stars}
+      {selectedStars} {selectedStars === 1 ? "star" : "stars"} of {stars}
       <br />
     </>
   );
@@ -26,6 +27,8 @@ function StarRating({ stars = 5 }) {
 
 StarRating.propTypes = {
   stars: PropTypes.number,
+  selectedStars: PropTypes.number,
+  setSelectedStars: PropTypes.func.isRequired,
 };
 
 export default StarRating;

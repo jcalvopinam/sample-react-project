@@ -5,34 +5,81 @@ import Card from "./components/Card";
 import StarRating from "./components/StarRating";
 import useGitHubUser from "./hooks/useGitHubUser";
 
+const initialState = {
+  checked: false,
+  selectedStars: 0,
+};
+
+function reducer(state, action) {
+  switch (action.type) {
+    case "DELIVERY":
+      return {
+        ...state,
+        checked: !state.checked,
+      };
+    case "SELECTED_STARS":
+      return {
+        ...state,
+        selectedStars: action.payload,
+      };
+    case "RESET_STARS":
+      return {
+        ...state,
+        selectedStars: 0,
+        checked: false,
+      };
+    default:
+      return state;
+  }
+}
+
 function App({ name }) {
-  const [checked, dispatch] = useReducer((checked) => !checked, false);
+  const [state, dispatch] = useReducer(reducer, initialState);
   const { user, loading, error, fetchUsers } = useGitHubUser();
 
-  if (loading) {
-    return <p>Loading user...</p>;
-  }
+  const handleDeliveryClick = () => {
+    dispatch({ type: "DELIVERY" });
+  };
 
-  if (error) {
-    return <p>Error: {error.message}</p>;
-  }
+  const dispatchSelectedStars = (stars) => {
+    dispatch({ type: "SELECTED_STARS", payload: stars });
+  };
 
-  if (!user) {
-    return <p>No user found</p>;
-  }
+  const handleSwapClick = () => {
+    dispatch({ type: "RESET_STARS" });
+    fetchUsers();
+  };
+
+  if (loading) return <p>Loading user...</p>;
+  if (error) return <p>Error: {error.message}</p>;
+  if (!user) return <p>No user found</p>;
 
   return (
     <div>
-      <Card defaultName={name} user={user} fetchUsers={fetchUsers} />
+      <Card defaultName={name} user={user} fetchUsers={handleSwapClick} />
       <h4>
-        The package is: <input type="checkbox" checked={checked} disabled />
-        {checked ? " delivered!" : " not delivered!"}
+        The package is:{" "}
+        <input
+          type="checkbox"
+          checked={state.checked}
+          onChange={handleDeliveryClick}
+          disabled
+        />
+        {state.checked ? " delivered!" : " not delivered!"}
       </h4>
 
-      {checked && <StarRating stars={5} />}
+      {state.checked && (
+        <StarRating
+          stars={5}
+          selectedStars={state.selectedStars}
+          setSelectedStars={dispatchSelectedStars}
+        />
+      )}
+
       <br />
-      <button onClick={dispatch}>
-        {!checked ? " deliver now!" : " cancel delivery!"}
+
+      <button onClick={handleDeliveryClick}>
+        {!state.checked ? " deliver now!" : " cancel delivery!"}
       </button>
     </div>
   );
