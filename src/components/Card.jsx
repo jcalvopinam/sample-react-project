@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import "../App.css";
 
-function Card({ user, defaultName, fetchUsers }) {
+function Card({ defaultName, user, tagColor, fetchUsers }) {
   const { avatar_url, login } = user;
   return (
     <div className="user-card">
@@ -14,7 +14,7 @@ function Card({ user, defaultName, fetchUsers }) {
           onClick={fetchUsers}
         />
       </div>
-      <h3> hi, {user ? login : defaultName}!</h3>
+      <h3 ref={tagColor}> hi, {user ? login : defaultName}!</h3>
     </div>
   );
 }
@@ -26,6 +26,7 @@ Card.propTypes = {
   }),
   defaultName: PropTypes.string,
   fetchUsers: PropTypes.func.isRequired,
+  tagColor: PropTypes.object,
 };
 
 export default Card;

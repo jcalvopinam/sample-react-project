@@ -1,7 +1,8 @@
 import PropTypes from "prop-types";
-import { useReducer } from "react";
+import { useReducer, useRef } from "react";
 import "./App.css";
 import Card from "./components/Card";
+import ColorForm from "./components/ColorForm";
 import StarRating from "./components/StarRating";
 import useGitHubUser from "./hooks/useGitHubUser";
 
@@ -34,6 +35,9 @@ function reducer(state, action) {
 }
 
 function App({ name }) {
+  const messageRef = useRef();
+  const usernameRef = useRef();
+
   const [state, dispatch] = useReducer(reducer, initialState);
   const { user, loading, error, fetchUsers } = useGitHubUser();
 
@@ -56,8 +60,13 @@ function App({ name }) {
 
   return (
     <div>
-      <Card defaultName={name} user={user} fetchUsers={handleSwapClick} />
-      <h4>
+      <Card
+        defaultName={name}
+        user={user}
+        tagColor={usernameRef}
+        fetchUsers={handleSwapClick}
+      />
+      <h4 ref={messageRef}>
         The package is:{" "}
         <input
           type="checkbox"
@@ -67,6 +76,8 @@ function App({ name }) {
         />
         {state.checked ? " delivered!" : " not delivered!"}
       </h4>
+
+      <ColorForm tagUsernameRef={usernameRef} tagMessageRef={messageRef} />
 
       {state.checked && (
         <StarRating
